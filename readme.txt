@@ -1,5 +1,5 @@
 === Plugin Name ===
-Plugin Name: Email Newsletter Signup/Subscribe Form by Comm100 Email Marketing
+Plugin Name: Newsletter Signup/Subscribe Form by Comm100 Email Marketing
 Contributors: Comm100Corp
 Requires at least: 3.0
 Tested up to: 3.4
