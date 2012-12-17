@@ -56,7 +56,7 @@ class Comm100EmailMarketing
 	{
 		if (is_null($this->plugin_url))
 		{
-			$this->plugin_url = WP_PLUGIN_URL.'/comm100-email-marketing/plugin_files';
+			$this->plugin_url = WP_PLUGIN_URL.'/newsletter-signup-form-by-comm100/plugin_files';
 		}
 
 		return $this->plugin_url;
