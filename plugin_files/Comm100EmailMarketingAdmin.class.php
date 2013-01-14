@@ -181,6 +181,7 @@ final class Comm100EmailMarketingAdmin extends Comm100EmailMarketing
                                     <span style="padding-left: 5px;">
                                         <a href="https://hosted.comm100.com/Admin/ForgotSiteId.aspx" target="_blank" tabindex="-1">Forgot Site Id?</a>
                                     </span>
+                                    <div style="padding-left:5px;width: 400px;background-color: #FFFBCC;  border: solid 1px #E6DB55;  color: #555;margin-top: 5px;">where to get my site Id: log into your Comm100 account, click Account, click Others, click Site Profile and then you will find your site Id number.</div>
                                 </td>
 							</tr>
 							<tr>
