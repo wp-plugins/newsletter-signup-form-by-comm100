@@ -26,12 +26,12 @@ function comm100_script_request(params, success, error) {
 			document.getElementsByTagName('head')[0].appendChild(scr);
 		}
 		this.send = function _send (url, success, error) {
+			_success = success || function() {};	
 			_append_script(_id, url + '&callback=' + _id + '.onresponse');
 			_timer_timeout = setTimeout(function() {
 				if (error) error('Operation timeout.');
 			}, 60 * 1000);
-
-			_success = success || function() {};		
+	
 		}
 		this.onresponse = function _onresponse(response) {
 			//alert(response.toString())；
@@ -114,7 +114,7 @@ var comm100_plugin = (function() {
         });
     }
     function _get_code(site_id, options, success) {
-    	comm100_script_request('?action=code' + options, function(response) {
+    	comm100_script_request('?action=code' + options + '&siteId=' + site_id, function(response) {
     		if (response.success) {
     			if (success) {
     				success(response.response);

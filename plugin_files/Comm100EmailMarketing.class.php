@@ -349,9 +349,15 @@ class Comm100EmailMarketingWidget extends WP_Widget
 								<td><input type="checkbox" class="comm100-last-name-required"></td>\
 							</tr>\
 						</tbody>\
-					</table>'
+					</table>';
 
-							jQuery('#<?php echo $this->get_field_id('form')?> .comm100-fields').html(html);
+							var set_html = function(){
+								if (jQuery('#<?php echo $this->get_field_id('form')?> .comm100-fields').is(':visible') == false) {
+									setTimeout(set_html, 100);
+								}
+								jQuery('#<?php echo $this->get_field_id('form')?> .comm100-fields').html(html);
+							};
+							setTimeout(set_html, 100);
 						});
 
 					});
