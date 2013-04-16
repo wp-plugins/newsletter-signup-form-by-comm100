@@ -256,8 +256,7 @@ final class Comm100EmailMarketingAdmin extends Comm100EmailMarketing
 	 */
 	public function control_panel_page()
 	{
-		$site_id = $this->get_site_id();
-		$cpanel_url = "https://hosted.comm100.com/adminmanage/login.aspx?apptype=1&siteId=" . $site_id;
+		$cpanel_url = "https://hosted.comm100.com/adminmanage/login.aspx?appType=4";
         
 		$base = Comm100EmailMarketing::get_instance()->get_plugin_url();
 
