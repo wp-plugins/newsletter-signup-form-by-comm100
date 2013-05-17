@@ -1,32 +1,39 @@
 === Plugin Name ===
-Plugin Name: Newsletter Signup/Subscribe Form by Comm100 Email Marketing
+Plugin Name: Comm100 Email Newsletter Subscribe/Signup Form
 Contributors: Comm100Corp
 Requires at least: 3.0
 Tested up to: 3.4
-Stable tag: 1.0
-Tags: newsletter signup, email subscribe, email capture, email marketing, email subscription, subscribe form, comm100, newsletter widget, email newsletter widget, newsletter plugin
+Stable tag: 1.1
+Tags: email newsletter, newsletter subscribe, newsletter signup, email subscribe, email capture, email marketing, email subscription, subscribe form, comm100, newsletter widget, email newsletter widget, newsletter plugin
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-
-Put a newsletter signup form onto your WordPress site in seconds and watch your email subscribers grow with this email newsletter plugin!
+Have a newsletter subscribe/signup form set up on your site or blog in seconds. Create, send and track email newsletters without leaving WordPress!
 
 
 == Description ==
 
-Provided to you by Comm100 [Email Marketing](http://emailmarketing.comm100.com/ "Email Marketing"), this email newsletter plugin enables you to put a newsletter signup or email subscribe form onto your WordPress site in just seconds. This email newsletter signup plugin makes it easy for you to collect new email subscribers or sales leads for your email marketing campaigns. 
+This email newsletter plugin enables you to put a newsletter signup or email subscribe form onto your WordPress site in just seconds, making it easy to collect newsletter subscribers or sales leads for your email marketing campaigns. 
 
-Please note that you need to have a Comm100 Email Marketing account to set up your email subscribe form with this email newsletter plugin. [Sign up for Comm100 Email Marketing now!](https://hosted.comm100.com/Admin/freetrial.aspx?language=0&product=1&c_cId=emwpplugin "Sign up for Comm100 Email Marketing") 
+**Fully Customizable Newsletter Subscribe Form**
 
-Before putting the newsletter signup or email subscribe form onto your WordPress site, you have options to customize the form title, the button text as well as the fileds to be displayed(what information you want to collect from your contacts, such as name and email) within the email newsletter plugin. 
+Customizable options in this email newsletter plugin include:
 
-The contacts collected through this email subscribe plugin will be automatically added to a pre-defined mailing list in your Comm100 Email Marketing account. You can then use Comm100 Email Marketing to manage these contacts and send email newsletters to them. You can also set up an email auto-responder to automatically send these subscribers a series of pre-defined email newsletters.
+* the title of the subscribe form (Subscribe to Our Newsletter, Keep Me Updated or anything else )
+* the text of the subscribe button (Subscribe, Sign Up,Email Me or anything else your like)
+* the fileds to be displayed(what information to collect, such as name,email, etc.) 
+
+**Create, Send & Track Email Newsletters without Leaving WordPress**
+
+* This email newsletter plugin is an extension of Comm100 Email Marketing, a fully functional email marketing solution. 
+* Subscribers collected through the newsletter subscribe form will be automatically added to a pre-defined mailing list in your Comm100 Email Marketing account. 
+* You can manage the subscribers, send email newsletters to them and track the email performance directly from your WordPress admin panel. You are also able to access all your campaign data and make operations in the Comm100 control panel.
+* You can set up an email auto-responder to automatically send these subscribers a series of pre-defined email newsletters.
 
 
+**What is Comm100 Email Marketing**
 
-**About Comm100 Email Marketing**
-
-Comm100 Email Marketing is the [best email marketing software](http://emailmarketing.comm100.com/ "Best Email Marketing Software"), also known as [email newsletter software](http://emailmarketing.comm100.com/newsletter/ "Email Newsletter Software") that offers all the tools needed to implement a successful email campaign, including high inbox delivery rate, engaging and personalized email newsletter templates, the ability to segment and target email lists, precise and organized tracking capabilities and much more. Comm100 Email Marketing enables you to develop and maintain good customer relationships and increase your sales revenue at a very low cost.  [Learn more](http://emailmarketing.comm100.com/ "Learn more about Comm100 Email Marketing")
+[Comm100 Email Marketing](http://emailmarketing.comm100.com/ "Best Email Marketing Software") is a professional [email newsletter software](http://emailmarketing.comm100.com/newsletter/ "Email Newsletter Software") that offers all the tools needed to implement a successful email newsletter marketing campaign, including high inbox delivery, engaging and personalized email newsletter templates, the ability to segment and target email lists, precise and organized tracking capabilities and much more. Comm100 Email Marketing enables you to develop and maintain good relationships with your newsletter subscribers at a very low cost.  [Learn more](http://emailmarketing.comm100.com/ "Learn more about Comm100 Email Marketing")
 
 
 
@@ -43,11 +50,11 @@ Comm100 Email Marketing is the [best email marketing software](http://emailmarke
 
 == Installation ==
 
-Following the steps below, you can make the newsletter signup form work for you in seconds.
+Following the steps below, you can have the newsletter signup form up and running in seconds.
 
 1. Install Comm100 Email Marketing onto your WordPress site.
 1. Click on the 'Email Marketing' menu on the left.
 1. Set up your Comm100 Email Marketing account. Register one if you haven't.
 1. Go to the 'Widgets' page to activate the email subscribe plugin and do some necessary settings.
-1. Congrats! Newsletter signup form successfully installed. Watch your email subscribers grow!
+1. Congrats! The email newsletter plugin is successfully installed. Watch your newsletter subscribers grow!
 
