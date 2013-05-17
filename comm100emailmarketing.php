@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Newsletter Signup/Subscribe Form by Comm100 Email Marketing  
+Plugin Name: Comm100 Email Newsletter Subscribe/Signup Form  
 Plugin URI: http://emailmarketing.comm100.com/
-Description: Put a newsletter signup form onto your WordPress site in seconds and watch your email list grow. Install it Now!
+Description: Have a newsletter subscribe form set up on your site or blog in seconds. Create, send and track email newsletters without leaving WordPress!
 Author: Comm100 Email Marketing
 Version: 1.1
 Author URI: http://emailmarketing.comm100.com/

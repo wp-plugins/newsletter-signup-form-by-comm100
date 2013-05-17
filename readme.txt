@@ -19,9 +19,9 @@ This email newsletter plugin enables you to put a newsletter signup or email sub
 
 Customizable options in this email newsletter plugin include:
 
-* the title of the subscribe form (Subscribe to Our Newsletter, Keep Me Updated or anything else )
-* the text of the subscribe button (Subscribe, Sign Up,Email Me or anything else your like)
-* the fileds to be displayed(what information to collect, such as name,email, etc.) 
+* The title of the subscribe form (Subscribe to Our Newsletter, Keep Me Updated or anything else )
+* The text of the subscribe button (Subscribe, Sign Up,Email Me or anything else your like)
+* The fileds to be displayed(what information to collect, such as name,email, etc.) 
 
 **Create, Send & Track Email Newsletters without Leaving WordPress**
 
