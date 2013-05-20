@@ -1,5 +1,5 @@
 === Plugin Name ===
-Plugin Name: Comm100 Email Newsletter Subscribe/Signup Form
+Plugin Name: Email Newsletter Subscribe/Signup Form by Comm100 Email Marketing
 Contributors: Comm100Corp
 Requires at least: 3.0
 Tested up to: 3.4
@@ -8,7 +8,7 @@ Tags: email newsletter, newsletter subscribe, newsletter signup, email subscribe
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Have a newsletter subscribe/signup form set up on your site or blog in seconds. Create, send and track email newsletters without leaving WordPress!
+Set up a newsletter subscribe/email subscribe/newsletter signup form in seconds. Create, send and track email newsletters without leaving WordPress!
 
 
 == Description ==
@@ -17,31 +17,31 @@ This email newsletter plugin enables you to put a newsletter signup or email sub
 
 **Fully Customizable Newsletter Subscribe Form**
 
-Customizable options in this email newsletter plugin include:
+Customizable options in this email marketing/email newsletter plugin include:
 
-* The title of the subscribe form (Subscribe to Our Newsletter, Keep Me Updated or anything else )
-* The text of the subscribe button (Subscribe, Sign Up,Email Me or anything else your like)
-* The fileds to be displayed(what information to collect, such as name,email, etc.) 
+* The title of the email subscribe form (Subscribe to Our Newsletter, Keep Me Updated or anything else )
+* The text of the newsletter signup button (Subscribe, Sign Up, Email Me or anything else your like)
+* The fields to be displayed in the email subscribe form(what information to collect from your email subscribers, such as name, email, etc.) 
 
 **Create, Send & Track Email Newsletters without Leaving WordPress**
 
 * This email newsletter plugin is an extension of Comm100 Email Marketing, a fully functional email marketing solution. 
-* Subscribers collected through the newsletter subscribe form will be automatically added to a pre-defined mailing list in your Comm100 Email Marketing account. 
-* You can manage the subscribers, send email newsletters to them and track the email performance directly from your WordPress admin panel. You are also able to access all your campaign data and make operations in the Comm100 control panel.
-* You can set up an email auto-responder to automatically send these subscribers a series of pre-defined email newsletters.
+* Email subscribers collected through the newsletter subscribe form will be automatically added to a pre-defined mailing list in your Comm100 Email Marketing account. 
+* You can manage the email subscribers, send email newsletters to them and track the email performance directly from your WordPress admin panel. You are also able to access all your campaign data and make operations on the Comm100 site.
+* You can set up an email auto-responder to automatically send these email subscribers a series of pre-defined email newsletters.
 
 
 **What is Comm100 Email Marketing**
 
-[Comm100 Email Marketing](http://emailmarketing.comm100.com/ "Best Email Marketing Software") is a professional [email newsletter software](http://emailmarketing.comm100.com/newsletter/ "Email Newsletter Software") that offers all the tools needed to implement a successful email newsletter marketing campaign, including high inbox delivery, engaging and personalized email newsletter templates, the ability to segment and target email lists, precise and organized tracking capabilities and much more. Comm100 Email Marketing enables you to develop and maintain good relationships with your newsletter subscribers at a very low cost.  [Learn more](http://emailmarketing.comm100.com/ "Learn more about Comm100 Email Marketing")
+[Comm100 Email Marketing](http://emailmarketing.comm100.com/ "Best Email Marketing Software") is a professional [email newsletter software](http://emailmarketing.comm100.com/newsletter/ "Email Newsletter Software") that offers all the tools needed to implement a successful email marketing campaign, including high inbox delivery, engaging and personalized email newsletter templates, the ability to segment and target email lists, precise and organized tracking capabilities and much more. Comm100 Email Marketing enables you to develop and maintain good relationships with your newsletter subscribers at a very low cost.  [Learn more](http://emailmarketing.comm100.com/ "Learn more about Comm100 Email Marketing")
 
 
 
-**What Our Customers Say**
+**What Comm100 Email Marketing Users Say**
 
-"Comm100 Email Marketing helps us achieve 15% extra sales each month through our email newsletter program. I also recommend Comm100 to my customers and some of them are already using it,"    ------ Juan Pablo Orozco, CEO of GDLsystems
+"Comm100 Email Marketing helps us achieve 15% extra sales each month through our email newsletter program. I also recommend Comm100 Email Marketing to my customers and some of them are already using it,"    ------ Juan Pablo Orozco, CEO of GDLsystems
 
-"Comm100's email newsletter software is an intelligent system that knows how to avoid spamming and offers a user-friendly experience at the same time. Their customer service is also fantastic, helping us devotedly all the way through,"    ------ Yasmin M. Moslem, Training Coordinator of ATIDA
+"Comm100's email newsletter software is an intelligent email marketing system that knows how to avoid spamming and offers a user-friendly experience at the same time. Their customer service is also fantastic, helping us devotedly all the way through,"    ------ Yasmin M. Moslem, Training Coordinator of ATIDA
 
 
 [>>More Email Marketing Stories](http://emailmarketing.comm100.com/casestudytestimonials.aspx "Email Marketing Customer Stories")
