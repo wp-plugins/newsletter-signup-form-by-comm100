@@ -3,7 +3,7 @@ Plugin Name: Email Newsletter Subscribe/Signup Form by Comm100 Email Marketing
 Contributors: Comm100Corp
 Requires at least: 3.0
 Tested up to: 3.4
-Stable tag: 1.1
+Stable tag: 1.2
 Tags: email newsletter, newsletter subscribe, newsletter signup, email subscribe, email capture, email marketing, email subscription, subscribe form, comm100, newsletter widget, email newsletter widget, newsletter plugin
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
