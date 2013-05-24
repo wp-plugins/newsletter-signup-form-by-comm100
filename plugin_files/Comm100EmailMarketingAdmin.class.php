@@ -153,9 +153,9 @@ final class Comm100EmailMarketingAdmin extends Comm100EmailMarketing
 			<script type="text/javascript" src="<?php echo Comm100EmailMarketing::$service_url; ?>?action=session"></script>
 
 
-			<div id="comm100emailmarketing_login" class="metabox-holder">
+			<div id="comm100EM_login" class="metabox-holder" >
 				<div class="postbox">
-					<h3>Link up to your current Comm100 account</h3>
+					<h3>Set up Your Comm100 Email Marketing</h3>
 					<div class="postbox_content">
 						
 						<div style="padding:10px;display:none;" id="login_error_">
@@ -164,50 +164,76 @@ final class Comm100EmailMarketingAdmin extends Comm100EmailMarketing
 							</div>
 						</div>
 
-						
-						<div style="padding-left:10px;padding-top:10px;font-weight:bold;font-size:13px;">
-							<a id="register_link" style="" href="https://hosted.comm100.com/admin/freetrial.aspx?language=0&product=1&source=wordpress">Click here</a> to create a new Comm100 account.
-							<script type="text/javascript">
-								setTimeout(function() {
-									document.getElementById('register_link').href = 'https://hosted.comm100.com/admin/freetrial.aspx?language=0&product=1&source=wordpress&return=' + encodeURIComponent(window.location.href);
-								}, 100);
-							</script>
+						<div style="padding:10px 0 10px 10px;">
+							<input id="login1" type="radio" name="login" onclick="document.getElementById('login_new').style.display='block';document.getElementById('login_old').style.display='none';" 
+							<?php if (!isset($_GET['email'])) echo 'checked="checked"'; ?> />
+							<label for="login1" style="padding-left:0px;">I'm new to Comm100</label>
 						</div>
 
-						<table class="form-table">
-							<tr>
-								<th scope="row" style="width: 100px;"><label for="login_site_id" style="font-size:12px;">Site Id:</label></th>
-								<td><input type="text" style="width: 230px;" name="login_site_id" id="login_site_id" value="<?php echo $query_site_id ?>">
-                                    <span style="padding-left: 5px;">
-                                        <a href="https://hosted.comm100.com/Admin/ForgotSiteId.aspx" target="_blank" tabindex="-1">Forgot Site Id?</a>
-                                    </span>
-                                    <div style="padding-left:5px;width: 400px;background-color: #FFFBCC;  border: solid 1px #E6DB55;  color: #555;margin-top: 5px;">where to get my site Id: log into your Comm100 account, click Account, click Others, click Site Profile and then you will find your site Id number.</div>
-                                </td>
-							</tr>
-							<tr>
-								<th scope="row" style="width: 100px;"><label for="login_email" style="font-size:12px;">Email:</label></th>
-								<td><input type="text" style="width: 230px;" name="login_email" id="login_email" value="<?php echo $query_email ?>"></td>
-								<td></td>
-							</tr>
-							<tr>
-								<th scope="row" style="width: 100px;"><label for="login_password" style="font-size:12px;">Password:</label></th>
-								<td><input type="password" style="width: 230px;" name="login_password" id="login_password">
-                                    <span style="padding-left: 5px;">
-                                        <a href="https://hosted.comm100.com/Admin/ForgotPassword.aspx" target="_blank" tabindex="-1">Forgot your password?</a>
-                                    </span>
-                                </td>
-							</tr>
-						</table>
+                        <div style="padding: 5px 0 0 30px;<?php if (isset($_GET['email'])) echo 'display:none;'; ?>" id="login_new">
+                        	<input type="submit" value="Sign Up" class="button-primary" onclick="window.location.href='https://hosted.comm100.com/admin/freetrial.aspx?language=0&product=1&source=wordpress&return=' + encodeURIComponent(window.location.href)"/>
+                        </div>
 
-						<p class="submit" style="padding-left:10px;">
-							<input type="hidden" name="login_form" value="1">
-							<input type="submit" id="login_submit" class="button-primary" name="login_submit" value="Link Up" 
-							onclick="comm100_plugin.login();return false;">
-							<img id="login_submit_img" src="<?php echo $base ?>/images/ajax_loader.gif" title="waitting" style="display:none;"/>
-						</p>
+						<div style="padding:15px 0 10px 10px;">				
+							<input id="login2" <?php if (isset($_GET['email'])) echo 'checked="checked"'; ?>
+							 type="radio" name="login" onclick="document.getElementById('login_new').style.display='none';document.getElementById('login_old').style.display='block';"/>
+							<label for="login2">I already have a Comm100 Email Marketing account</label>
+						</div>
+						<div id="login_old" style="padding:0 0 0 25px;<?php if (!isset($_GET['email'])) echo 'display:none;'; ?>">
+							<table class="form-table">
+							<!-- 	<tr>
+									<th scope="row" style="width: 100px;"><label for="login_site_id" style="font-size:12px;">Site ID:</label></th>
+									<td><input type="text" style="width: 230px;" name="login_site_id" id="login_site_id" value="<?php echo $query_site_id ?>"></td>
+									<td></td>
+								</tr> -->
+								<tr>
+									<th scope="row" style="width: 100px;"><label for="login_email" style="font-size:12px;">Email:</label></th>
+									<td><input type="text" style="width: 230px;" name="login_email" id="login_email" value="<?php echo $query_email ?>"></td>
+									<td></td>
+								</tr>
+								<tr>
+									<th scope="row" style="width: 100px;"><label for="login_password" style="font-size:12px;">Password:</label></th>
+									<td><input type="password" style="width: 230px;" name="login_password" id="login_password">
+	                                    <span style="padding-left: 5px;">
+	                                        <a href="https://hosted.comm100.com/Admin/ForgotPassword.aspx" target="_blank" tabindex="-1">Forgot your password?</a>
+	                                    </span>
+	                                </td>
+								</tr>
+							</table>
+
+							<p class="submit" style="padding-left:10px;">
+								<input type="hidden" name="login_form" value="1">
+								<input type="submit" id="login_submit" class="button-primary" name="login_submit" value="Link Up" 
+									onclick="comm100_plugin.sites();return false;">
+								<img id="login_submit_img" src="<?php echo $base ?>/images/ajax_loader.gif" title="waitting" style="display:none;"/>
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
+
+			<div id="comm100EM_choose_site" class="metabox-holder" style="display:none;">
+                 <div class="postbox">   
+				    <h3>There are 
+				    	<span style="color: #EFC44C;font-weight: bold;font-size: larger;" id="num_sites"></span> 
+				    	accounts associated with this operator email. Please choose one to link up.
+				    </h3>
+				    <div class="postbox_content" style="padding:0px 0 10px 20px;">            		
+						<div style="padding:10px;display:none;" id="choose_site_error_">
+							<div style="border:1px solid #c00;background-color:#ffebe8;padding:10px;border-radius: 3px;">
+								<b>Error</b>:&nbsp;<span id="choose_site_error_text"></span>
+							</div>
+						</div>
+                        <div style="color: #464646;padding: 20px 0 10px 0" id="login_sites">
+                        </div>
+						<p class="submit" style="padding:5px 0 0 0;">
+							<input type="submit" id="choose_site_submit" class="button-primary" name="login_submit" value="Link Up" 
+								onclick="comm100_plugin.choose_site();return false;">
+							<img id="choose_site_submit_img" src="<?php echo $base ?>/images/ajax_loader.gif" title="waitting" style="display:none;"/>
+						</p>
+				    </div>
+                </div>
+            </div>
 
 		<?php } else { ?>
 			<div id="comm100emailmarketing_settings" class="metabox-holder">
@@ -229,7 +255,6 @@ final class Comm100EmailMarketingAdmin extends Comm100EmailMarketing
 					<h3>Your Linked Comm100 Account</h3>
 					<div class="postbox_content" style="padding:10px;">
 						<div style="padding-bottom:20px;"> 
-                            <div style="padding: 10px 0 0 0px;">Site Id: <?php echo $this->get_site_id(); ?></div>
                             <div style="padding: 10px 0 0 0px;">Email: <?php echo urldecode($this->get_email()); ?></div>
                         </div>
 						<div style="padding-bottom:10px;">Activate Comm100 Email Marketing Widget.</div>

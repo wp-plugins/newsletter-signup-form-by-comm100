@@ -68,7 +68,7 @@ var comm100_plugin = (function() {
         document.getElementById('login_submit_img').style.display = '';
         document.getElementById('login_submit').disabled = true;
 
-        var site_id = encodeURIComponent(document.getElementById('login_site_id').value.trim());
+        var site_id = encodeURIComponent(document.getElementById('site_id').value.trim());
         var email = encodeURIComponent(document.getElementById('login_email').value);
         var password = encodeURIComponent(document.getElementById('login_password').value);
         var timezone = encodeURIComponent(_get_timezone());
@@ -127,11 +127,92 @@ var comm100_plugin = (function() {
     function _get_timezone() {
         return ((new Date()).getTimezoneOffset() / -60.0).toString();
     }
+    function _show_sites(sites) {
+    	var html = ''
+    	for (var i = 0, len = sites.length; i < len; i++) {
+    		var s = sites[i];
+
+    		html += '<div style="padding: 0 0 15px 0"><input name="comm100site" type="radio" id="site'+s.id+'"';
+    		html += ' onclick="document.getElementById(\'site_id\').value='+s.id+';"';
+    		if (i == 0) html += 'checked ';
+    		html += '/> <label for="site'+s.id+'">Site Id: <span style="color: #000;font-weight: bold;font-size: larger;">';
+    		html += s.id;
+    		if (s.inactive) html+= '<span style="color: red; font-size: x-small;padding: 0 0 3px 3px;">(Inactive)</span>';
+    		html += '</span><span style="padding: 0 0 0 7px;">Last Login: ';
+    		html += s.last_login_time;
+    		html += '</span><span style="padding: 0 0 0 7px;">Account Created: '
+    		html += s.register_time + '</span></label></div>';
+    	}
+
+    	document.getElementById('login_sites').innerHTML = html;
+
+    	hide_element('comm100EM_login');
+    	show_element('comm100EM_choose_site');
+
+    	document.getElementById('num_sites').innerHTML = sites.length;
+    }
+    function _choose_site() {
+        show_element('choose_site_submit_img');
+        document.getElementById('choose_site_submit').disabled = true;
+
+        _login(function () {
+	        hide_element('choose_site_submit_img');
+	        document.getElementById('choose_site_submit').disabled = false;
+        }, function (error) {
+	        hide_element('choose_site_submit_img');
+	        document.getElementById('choose_site_submit').disabled = false;
+
+		    document.getElementById('choose_site_error_').style.display = '';
+		    document.getElementById('choose_site_error_text').innerHTML = error;        	
+        })
+    }
+
+    function _sites () {
+        show_element('login_submit_img');
+        document.getElementById('login_submit').disabled = true;
+
+    	var email = encodeURIComponent(document.getElementById('login_email').value);
+        var password = encodeURIComponent(document.getElementById('login_password').value);
+        
+    	comm100_script_request('?action=sites&email='+email+'&password='+password+'&timezoneoffset='+(new Date()).getTimezoneOffset(), 
+    	function (response) {
+    		if (response.success) {
+    			var sites = response.response;
+    			if (sites.length == 0) {
+    				return;
+    			}
+
+    			document.getElementById('site_id').value = sites[0].id;
+    			if (sites.length > 1) {
+    				_show_sites(response.response);
+    			} else {
+			        _login(function () {
+				        hide_element('login_submit_img');
+				        document.getElementById('login_submit').disabled = false;
+			        }, function (error) {
+				        hide_element('login_submit_img');
+				        document.getElementById('login_submit').disabled = false;
+
+					    document.getElementById('login_error_').style.display = '';
+					    document.getElementById('login_error_text').innerHTML = error;        	
+			        })
+    			}
+    		} else {
+		        show_element('login_error_');
+		        document.getElementById('login_error_text').innerHTML = response.error;
+		        
+			    hide_element('login_submit_img');
+			    document.getElementById('login_submit').disabled = false;
+			}
+    	});
+    }
     return {
         login: _login,
         get_code: _get_code,
         get_mailling_lists: _get_mailling_lists,
-        get_fields: _get_fields
+        get_fields: _get_fields,
+        sites: _sites,
+        choose_site: _choose_site,
     };
 })();
 
