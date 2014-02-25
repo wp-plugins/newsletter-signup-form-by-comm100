@@ -42,10 +42,10 @@ Comm100 Email Marketing is a professional [email newsletter software](http://ema
 
 **What Comm100 Email Marketing Users Say**
 
-"Comm100 Email Marketing helps us achieve 15% extra sales each month through our email newsletter program. I also recommend Comm100 Email Marketing to my customers and some of them are already using it,"    ------ Juan Pablo Orozco, CEO of GDLsystems
+"Comm100 Email Marketing helps us achieve 15% extra sales each month through our email newsletter program. I also recommend Comm100 Email Marketing to my customers and some of them are already using it,"    ------ Juan Pablo Orozco, CEO at GDLsystems
 
-"Comm100's email newsletter software is an intelligent email marketing system that knows how to avoid spamming and offers a user-friendly experience at the same time. Their customer service is also fantastic, helping us devotedly all the way through,"    ------ Yasmin M. Moslem, Training Coordinator of ATIDA
-
+"It was easy to use and set up. The support team give us all atention we need in order to use these comunications tools the best way. We are fully satisfied and sure to recomend it to more people."
+------ Sylvain C. PANNEAU, Sales Manager at Metodologia ADVANCE
 
 [>>More Email Marketing Stories](http://emailmarketing.comm100.com/casestudytestimonials.aspx "Email Marketing Customer Stories")
 
