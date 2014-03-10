@@ -299,10 +299,10 @@ class Comm100EmailMarketingWidget extends WP_Widget
 					</table>
 				</div>
 			</div> 
-			<div class="comm100-setting-item">
+			<div class="comm100-setting-item" style="display:none;">
 				<div class="comm100-setting-title">
 					<span class="comm100-setting-title-label">Show Comm100 Link:</span>
-					<input type="checkbox" checked="checked" class="comm100-poweredby"/>
+					<input type="checkbox" class="comm100-poweredby"/>
 				</div>
 			</div>
 
