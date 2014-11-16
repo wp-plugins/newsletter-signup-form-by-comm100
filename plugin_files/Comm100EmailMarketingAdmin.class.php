@@ -30,6 +30,7 @@ final class Comm100EmailMarketingAdmin extends Comm100EmailMarketing
 			if (isset($_POST['site_id'])) {
 				$this->update_site_id($_POST['site_id']);
 				$this->update_email($_POST['email']);
+				$this->update_cpanel_domain($_POST['cpanel_domain']);
                 $show_success = TRUE;
 			}
 		} else {
@@ -132,11 +133,15 @@ final class Comm100EmailMarketingAdmin extends Comm100EmailMarketing
 		$base = Comm100EmailMarketing::get_instance()->get_plugin_url();
 
 		$site_id = $this->get_site_id();
+		$cpanel_domain = $this->get_cpanel_domain();
 
 		$query_site_id = $_GET['siteId'];
 		$query_email = $_GET['email'];
 		
 	?>
+		<script type="text/javascript">
+			var comm100_cpanel_domain = "<?php echo $cpanel_domain ?>";
+		</script>
 		<script type="text/javascript" src="<?php echo $base ?>/js/plugin.js">
 		</script>
 
@@ -148,11 +153,12 @@ final class Comm100EmailMarketingAdmin extends Comm100EmailMarketing
 			<form method="POST" action="?page=comm100emailmarketing&show_success=true" name="site_id_form">
 				<input type="hidden" name="site_id" id="site_id" />
 				<input type="hidden" name="email" id="email" />
+				<input type="hidden" name="cpanel_domain" id="cpanel_domain" />
 			</form>
 		<?php if (!$this->is_installed()) { ?>
-			<script type="text/javascript" src="<?php echo Comm100EmailMarketing::$service_url; ?>?action=session"></script>
-
-
+			<script type="text/javascript">
+				var comm100_cpanel_domain = "<?php echo $cpanel_domain ?>";
+			</script>
 			<div id="comm100EM_login" class="metabox-holder" >
 				<div class="postbox">
 					<h3>Set up Your Comm100 Email Marketing</h3>
@@ -171,7 +177,7 @@ final class Comm100EmailMarketingAdmin extends Comm100EmailMarketing
 						</div>
 
                         <div style="padding: 5px 0 0 30px;<?php if (isset($_GET['email'])) echo 'display:none;'; ?>" id="login_new">
-                        	<input type="submit" value="Sign Up" class="button-primary" onclick="window.location.href='https://hosted.comm100.com/admin/freetrial.aspx?language=0&product=1&source=wordpress&return=' + encodeURIComponent(window.location.href)"/>
+                        	<input type="submit" value="Sign Up" class="button-primary" onclick="window.location.href='https://www.comm100.com/secure/siteregister.aspx?language=0&planId=75&code=DD8ADE1C&source=wordpress&return=' + encodeURIComponent(window.location.href)"/>
                         </div>
 
 						<div style="padding:15px 0 10px 10px;">				
@@ -281,15 +287,13 @@ final class Comm100EmailMarketingAdmin extends Comm100EmailMarketing
 	 */
 	public function control_panel_page()
 	{
-		$cpanel_url = "https://hosted.comm100.com/adminmanage/login.aspx?appType=4";
-        
 		$base = Comm100EmailMarketing::get_instance()->get_plugin_url();
 
 		echo <<<HTML
 		    <script type="text/javascript" src="{$base}/js/page.js">
 		    </script>
-			<iframe id="control_panel" src="{$cpanel_url}" frameborder="0" width="100%" height="700"></iframe>
-			<div>You may also <a href="{$cpanel_url}" target="_blank">access the Control Panel in a new window</a>.</div>
+			<iframe id="control_panel" src="https://www.comm100.com/secure/login.aspx" frameborder="0" width="100%" height="700"></iframe>
+			<div>You may also <a href="https://www.comm100.com/secure/login.aspx" target="_blank">access the Control Panel in a new window</a>.</div>
 HTML;
 	}
     
@@ -312,6 +316,8 @@ HTML;
 		$this->site_id = 0;
 		delete_option('comm100emailmarketing_email');
 		$this->email = '';
+		delete_option('comm100EmailMarketing_cpanel_domain');
+		$this->cpanel_domain = '';
 	}
 
 	protected function update_site_id($site_id)
@@ -323,5 +329,11 @@ HTML;
 	{
 		update_option('comm100emailmarketing_email', $email);
 		$this->email = $email;
+	}
+
+	protected function update_cpanel_domain($cpanel_domain) 
+	{
+		update_option('comm100EmailMarketing_cpanel_domain', $cpanel_domain);
+		$this->cpanel_domain = $cpanel_domain;
 	}
 }

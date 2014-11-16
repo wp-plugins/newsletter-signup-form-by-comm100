@@ -12,49 +12,64 @@ function html_encode(html) {
 if (typeof comm100_script_id == 'undefined')
 	comm100_script_id = 0;
 
-function comm100_script_request(params, success, error) {
-	function request() {
-		var _id = 'comm100_script_' + comm100_script_id++;
-		var _success;
-		var _timer_timeout;
 
-		function _append_script(id, src) {
+function comm100_script_route(params, success, error) {
+	comm100_script_request(params, success, error, "route.comm100.com/routeserver/pluginHandler.ashx", "route1.comm100.com/routeserver/pluginHandler.ashx");
+}
+function comm100_script_cpanel(params, success, error) {
+	comm100_script_request(params, success, error, (comm100_cpanel_domain || "hosted.comm100.com") + "/AdminPluginService/emailmarketingplugin.ashx");
+}
+function comm100_script_request(params, success, error, url, backup_url) {
+	function request() {
+		var _id,
+			_success, _error,
+			_timer_timeout,
+			_self = this;
+
+		function _append_script(src, timeout) {
+			_id = 'comm100_script_' + comm100_script_id++;
+			window[_id] = _self;
+
 			var scr = document.createElement('script');
-			scr.src = src;
+			scr.src = src + '&callback=' + _id + '.onresponse';
 			scr.id = '_' + _id;
 			scr.type = 'text/javascript';
 			document.getElementsByTagName('head')[0].appendChild(scr);
+			_timer_timeout = setTimeout(timeout, 10*1000);
 		}
-		this.send = function _send (url, success, error) {
-			_success = success || function() {};	
-			_append_script(_id, url + '&callback=' + _id + '.onresponse');
-			_timer_timeout = setTimeout(function() {
-				if (error) error('Operation timeout.');
-			}, 60 * 1000);
-	
-		}
-		this.onresponse = function _onresponse(response) {
-			//alert(response.toString())；
+		function _remove_script() {
+			if (_timer_timeout) clearTimeout(_timer_timeout);
+
 			window[_id] = null;
 			var scr = document.getElementById('_' + _id);
-			document.getElementsByTagName('head')[0].removeChild(scr);
+			document.getElementsByTagName('head')[0].removeChild(scr);			
+		}
+		this.send = function (url, backup_url, success, error) {
+			_append_script(url, function() {
+				if (backup_url) {
+					_remove_script();
+					
+					_append_script(backup_url, function() {
+						_error('Operation timeout.');
+					});
+				} else {					
+					_error('Operation timeout.');
+				}
+			});
 
-			clearTimeout(_timer_timeout);
+			_error = error || function() {};
+			_success = success || function() {};		
+		};
+		this.onresponse = function _onresponse(response) {
+			_remove_script();
 
 			_success(response);
-		}
-		window[_id] = this;
+		};
 	}
 
 	var req = new request();
-
-	if(typeof comm100livechat_session == null) {
-        setTimeout(function() {
-	        req.send('http://hosted.comm100.com/adminpluginservice/emailmarketingplugin.ashx' + params + "&token=fjasedrlGkj[o5jghYwlthj0w934jhw_kljgAelkg459jghwlkj", success, error);
-        }, 1000);
-	} else {
-	    req.send('http://hosted.comm100.com/adminpluginservice/emailmarketingplugin.ashx' + params + "&token=fjasedrlGkj[o5jghYwlthj0w934jhw_kljgAelkg459jghwlkj", success, error);
-	}
+	if (backup_url) backup_url = 'https://' + backup_url + params;
+	req.send('https://' + url + params, backup_url, success, error);
 }
 
 var comm100_plugin = (function() {
@@ -73,11 +88,12 @@ var comm100_plugin = (function() {
         var password = encodeURIComponent(document.getElementById('login_password').value);
         var timezone = encodeURIComponent(_get_timezone());
 
-        comm100_script_request('?action=login&siteId=' + site_id + '&email=' + email + '&password=' + password
+        comm100_script_cpanel('?action=login&siteId=' + site_id + '&email=' + email + '&password=' + password
 			, function(response) {
 			    if(response.success) {
 			        document.getElementById('site_id').value = site_id;
 			        document.getElementById('email').value = email;
+			        document.getElementById('cpanel_domain').value = comm100_cpanel_domain;
 			        document.forms['site_id_form'].submit();
 			    }
 			    else {
@@ -95,7 +111,7 @@ var comm100_plugin = (function() {
 			});
     }
     function _get_mailling_lists(site_id, success, error) {
-        comm100_script_request('?action=maillinglist&siteId=' + site_id, function(response) {
+        comm100_script_cpanel('?action=maillinglist&siteId=' + site_id, function(response) {
             if(response.error) {     
                 if (typeof error != 'undefined')
     				alert(response.error);
@@ -105,7 +121,7 @@ var comm100_plugin = (function() {
         });
     }
     function _get_fields(site_id, success, error) {
-        comm100_script_request('?action=fields&siteId=' + site_id, function(response) {
+        comm100_script_cpanel('?action=fields&siteId=' + site_id, function(response) {
             if(response.error) {
     			alert(response.error);
             } else {
@@ -114,7 +130,7 @@ var comm100_plugin = (function() {
         });
     }
     function _get_code(site_id, options, success) {
-    	comm100_script_request('?action=code' + options + '&siteId=' + site_id, function(response) {
+    	comm100_script_cpanel('?action=code' + options + '&siteId=' + site_id, function(response) {
     		if (response.success) {
     			if (success) {
     				success(response.response);
@@ -167,6 +183,14 @@ var comm100_plugin = (function() {
         })
     }
 
+    function _show_error(error) {
+        show_element('login_error_');
+        document.getElementById('login_error_text').innerHTML = error;
+        
+	    hide_element('login_submit_img');
+	    document.getElementById('login_submit').disabled = false;   
+    }
+
     function _sites () {
         show_element('login_submit_img');
         document.getElementById('login_submit').disabled = true;
@@ -174,9 +198,20 @@ var comm100_plugin = (function() {
     	var email = encodeURIComponent(document.getElementById('login_email').value);
         var password = encodeURIComponent(document.getElementById('login_password').value);
         
-    	comm100_script_request('?action=sites&email='+email+'&password='+password+'&timezoneoffset='+(new Date()).getTimezoneOffset(), 
+        if (email.trim() == '') {
+        	_show_error('Email is required');
+        	return;
+        }
+        if (password == '') {
+        	_show_error('Password is required');
+        	return;
+        }
+
+    	comm100_script_route('?action=sites&email='+email+'&password='+password+'&timezoneoffset='+(new Date()).getTimezoneOffset(), 
     	function (response) {
     		if (response.success) {
+			    comm100_cpanel_domain = response.cpanel_domain;
+
     			var sites = response.response;
     			if (sites.length == 0) {
     				return;
@@ -204,6 +239,12 @@ var comm100_plugin = (function() {
 			    hide_element('login_submit_img');
 			    document.getElementById('login_submit').disabled = false;
 			}
+    	}, function(error){
+	        show_element('login_error_');
+	        document.getElementById('login_error_text').innerHTML = error;
+	        
+		    hide_element('login_submit_img');
+		    document.getElementById('login_submit').disabled = false;    		
     	});
     }
     return {

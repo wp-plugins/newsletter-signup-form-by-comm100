@@ -17,8 +17,6 @@ class Comm100EmailMarketing
 {
 	// singleton pattern
 	protected static $instance;
-	public static $service_url = 'https://hosted.comm100.com/AdminPluginService/emailmarketingplugin.ashx';
-	//public static $service_url = 'http://192.168.8.48/plugin/emailmarketingplugin.ashx';
 
 	/**
 	 * Absolute path to plugin files
@@ -27,6 +25,7 @@ class Comm100EmailMarketing
 	protected $site_id = null;
     protected $email = null;
 	protected $plan_id = null;
+	protected $cpanel_domain = null;
 
 	/**
 	 * Starts the plugin
@@ -89,6 +88,16 @@ class Comm100EmailMarketing
 
 		return $this->email;
 	}
+
+	public function get_cpanel_domain()
+	{
+		if (is_null($this->cpanel_domain))
+		{
+			$this->cpanel_domain = get_option('comm100emailmarketing_cpanel_domain');
+		}
+
+		return $this->cpanel_domain;
+	}
 }
 
 class Comm100EmailMarketingWidget extends WP_Widget
@@ -115,7 +124,7 @@ class Comm100EmailMarketingWidget extends WP_Widget
 		$code = isset($instance['code']) ? $instance['code'] : '';
 		$reset = isset($instance['reset']) ? $instance['reset'] : '1';
 		$title = (isset($instance['title']) && $instance['title'] != '' && $reset == '0') ? $instance['title'] : 'Subscribe';
-
+		$cpanel_domain = Comm100EmailMarketing::get_instance()->get_cpanel_domain();
 		
 		$base = Comm100EmailMarketing::get_instance()->get_plugin_url();
 
@@ -190,7 +199,10 @@ class Comm100EmailMarketingWidget extends WP_Widget
 				background: url('<?php echo $base?>/images/delete.gif') no-repeat;
 			}
 		</style>
-		<script type="text/javascript" src="<?php echo $base ?>/js/plugin.js"></script>
+		<script type="text/javascript">
+			var comm100_cpanel_domain = "<?php echo $cpanel_domain ?>";
+		</script>
+		<script type="text/javascript" src="<?php echo $base ?>/js/plugin.js?v20140929"></script>
 <?php
 		if (isset($instance['code']) && $reset == '0') {
 ?>
@@ -365,7 +377,7 @@ class Comm100EmailMarketingWidget extends WP_Widget
 
 
 				function comm100_preview(form_box) {
-					var w = window.open('http://hosted.comm100.com/AdminPluginService/emailmarketingplugin.ashx?action=preview' + comm100_form_options(form_box),'','left=200,top=200,statusbar=no,width=300,height=300');
+					var w = window.open('http://<?php echo Comm100EmailMarketing::get_instance()->get_cpanel_domain(); ?>/AdminPluginService/emailmarketingplugin.ashx?action=preview' + comm100_form_options(form_box),'','left=200,top=200,statusbar=no,width=300,height=300');
 					w.focus();
 				}
 				function comm100_form_options(form_box) {
