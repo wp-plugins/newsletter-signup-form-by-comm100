@@ -17,7 +17,9 @@ function comm100_script_route(params, success, error) {
 	comm100_script_request(params, success, error, "route.comm100.com/routeserver/pluginHandler.ashx", "route1.comm100.com/routeserver/pluginHandler.ashx");
 }
 function comm100_script_cpanel(params, success, error) {
-	comm100_script_request(params, success, error, (comm100_cpanel_domain || "hosted.comm100.com") + "/AdminPluginService/emailmarketingplugin.ashx");
+	params += '&token=fjasedrlGkj[o5jghYwlthj0w934jhw_kljgAelkg459jghwlkj'
+	comm100_script_request(params, success, error, 
+		(comm100_cpanel_domain || "hosted.comm100.com") + "/AdminPluginService/emailmarketingplugin.ashx");
 }
 function comm100_script_request(params, success, error, url, backup_url) {
 	function request() {
